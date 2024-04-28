@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border-collapse:collapse;
+            margin:1rem;
+        }
+        tr,td,th{
+            padding:6px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <form name=faktorial>
+        <table>
+            <tr>
+                <th colspan="3">Faktorial</th>
+            </tr>
+            <tr>
+                <td>N</td>
+                <td>
+                    <input type="number" name="n">
+                </td>
+                <td>
+                    <button id="factorial">Calc</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Hasil</td>
+                <td id="factorialResult"></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        const factorial = (n) => {
+            if (n === 0 || n === 1) {
+                return 1
+            } else {
+                return n * factorial(n - 1);
+            }
+        }
+        const deret = (n) =>{
+            if (n === 0 || n === 1) {
+                return 1
+            } else {
+                return n + deret(n - 1);
+            }
+        }
+
+        const factorialSubmit = (e) => {
+            e.preventDefault();
+            const number = parseInt(document.faktorial.n.value);
+            const factorialResult = factorial(number);
+            const deretResult = deret(number);
+            document.getElementById('factorialResult').innerHTML = factorialResult + deretResult;
+        }        
+        const factorialButton = document.querySelector('#factorial');
+        factorialButton.addEventListener('click',factorialSubmit);
+    </script>
+</body>
+
+</html>

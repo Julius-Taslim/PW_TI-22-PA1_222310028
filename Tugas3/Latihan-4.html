@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form>div {
+            padding: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="form">
+        <div>
+            <label for="saldo">Saldo :</label>
+            <input type="number" name="saldo">
+        </div>
+        <div>
+            <label for="bunga">Bunga :</label>
+            <input type="number" name="bunga">
+        </div>
+        <div>
+            <label for="waktu">Waktu (Bulan) :</label>
+            <input type="number" name="waktu">
+        </div>
+        <div>
+            <button>Calculate</button>
+            <input type="reset" value="Clear">
+        </div>
+    </form>
+    <p id="result"></p>
+    <script>
+        const countSaldo = (saldo, bunga, waktu) => {
+            let nilaiBunga;
+            let message = '';
+            for (i = waktu; i > 0; i--) {
+                nilaiBunga = saldo * (bunga / 100);
+                saldo += nilaiBunga
+                message += `Saldo Bulan ke - ${waktu - i} = ${saldo}<br>`
+            }
+            return message;
+        }
+        const calculate = (e) => {
+            const saldo = parseInt(document.form.saldo.value);
+            const bunga = parseInt(document.form.bunga.value);
+            const waktu = parseInt(document.form.waktu.value);
+            e.preventDefault();
+            document.getElementById('result').innerHTML = countSaldo(saldo, bunga, waktu);
+        }
+
+        const calculateButton = document.querySelector('button');
+        calculateButton.addEventListener('click', calculate);
+    </script>
+</body>
+
+</html>

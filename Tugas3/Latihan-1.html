@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Latihan-1</title>
+</head>
+<style>
+    form>div {
+        padding: 0.5rem;
+    }
+</style>
+
+<body>
+    <form>
+        <div>
+            <label for="nim">NPM : </label>
+            <input type="text" name="nim" id="nim">
+        </div>
+        <div>
+            <label for="nama">Nama : </label>
+            <input type="text" name="nama" id="nama">
+        </div>
+        <div>
+            <div>
+                <label for="jk_1">Laki-Laki</label>
+                <input type="radio" name="jk" id="jk_1" value="laki-laki">
+            </div>
+            <div>
+                <label for="jk_2">Perempuan</label>
+                <input type="radio" name="jk" id="jk_2" value="perempuan">
+            </div>
+        </div>
+        <div>
+            <label for="agama">Agama</label>
+            <select name="agama" id="agama">
+                <option value="Islam">Islam</option>
+                <option value="Katolik">Katolik</option>
+                <option value="Protestan">Protestan</option>
+                <option value="Buddha">Buddha</option>
+                <option value="Hindu">Hindu</option>
+                <option value="Konghucu">Konghucu</option>
+            </select>
+        </div>
+        <div>
+            <p>Status</p>
+            <div>
+                <label for="status">Aktif</label>
+                <input type="radio" name="status" value="aktif">
+            </div>
+            <div>
+                <label for="status">Non-Aktif</label>
+                <input type="radio" name="status" value="Non-aktif">
+            </div>
+        </div>
+        <div>
+            <label for="jurusan">Jurusan</label>
+            <input type="text" name="jurusan" id="jurusan">
+        </div>
+        <div>
+            <label for="komentar">Komentar</label><br>
+            <textarea name="komentar" id="komentar" rows="10" cols="30"></textarea>
+        </div>
+        <div>
+            <button type="button" onclick="onSubmit()">Submit</button>
+            <input type="reset">
+        </div>
+    </form>
+    <script>
+        function onSubmit() {
+            const nim = document.getElementById('nim').value;
+            const nama = document.getElementById('nama').value;
+            const jurusan = document.getElementById('jurusan').value;
+            const komentar = document.getElementById('komentar').value;
+
+            const radioButtons = document.getElementsByName("jk");
+            let gender;
+            for (const radioButton of radioButtons) {
+                if (radioButton.checked) {
+                     gender = radioButton.value;
+                    break;
+                }
+            }
+
+            const selectElement = document.getElementById("agama");
+            const selectedIndex = selectElement.selectedIndex;
+            let agama;
+            if (selectedIndex !== -1) {
+              const selectedOption = selectElement.options[selectedIndex];
+              agama = selectedOption.value;
+            } else {
+              console.log("No option selected.");
+            }
+
+            const radioButtonsStatus = document.getElementsByName("status");
+            let status;
+            for (const radioButton of radioButtonsStatus) {
+                if (radioButton.checked) {
+                    status = radioButton.value;
+                    break;
+                }
+            }
+            
+            const message = `NPM = ${nim}\nNama = ${nama}\nGender = ${gender}\nAgama = ${agama}\nStatus = ${status}\nJurusan = ${jurusan}\nKomentar = ${komentar}`
+            alert(message);
+        };
+    </script>
+</body>
+
+</html>

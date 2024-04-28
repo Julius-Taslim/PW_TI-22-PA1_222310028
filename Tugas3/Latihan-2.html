@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin: 1rem;
+        }
+
+        th,
+        td,
+        table {
+            border: 1px solid black;
+            padding:5px;
+        }
+
+        form>div {
+            padding: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td></td>
+            <th>Eksekutif</th>
+            <th>Bisnis</th>
+            <th>Ekonomi</th>
+        </tr>
+        <tr>
+            <th>Jakarta</th>
+            <td>70000</td>
+            <td>40000</td>
+            <td>10000</td>
+        </tr>
+        <tr>
+            <th>Solo</th>
+            <td>80000</td>
+            <td>50000</td>
+            <td>20000</td>
+        </tr>
+        <tr>
+            <th>Surabaya</th>
+            <td>90000</td>
+            <td>60000</td>
+            <td>30000</td>
+        </tr>
+    </table>
+    <form name="form">
+        <div>
+            <label for="name">Nama</label>
+            <input type="text" id="nama" name="value">
+        </div>
+        <div>
+            <label for="tujuan">Destinasi : </label>
+            <select name="tujuan" id="tujuan">
+                <option value="Jakarta">Jakarta</option>
+                <option value="Solo">Solo</option>
+                <option value="Surabaya">Surabaya</option>
+            </select>
+        </div>
+        <div>
+            <label for="kelas">Kelas : </label>
+            <select name="kelas" id="kelas">
+                <option value="Eksekutif">Eksekutif</option>
+                <option value="Bisnis">Bisnis</option>
+                <option value="Ekonomi">Ekonomi</option>
+            </select>
+        </div>
+        <div>
+            <label for="amount">Jumlah Tiket : </label>
+            <input type="number" id="amount" name="amount">
+        </div>
+        <div>
+            <p>Status Member</p>
+            <div>
+                <label for="member1">Ya</label>
+                <input type="radio" name="member" id="member1" value=1>
+            </div>
+            <div>
+                <label for="member2">Tidak</label>
+                <input type="radio" name="member" id="member2" value=0>
+            </div>
+        </div>
+            <button type="button" onclick="onSubmit()">Submit</button>
+            <input type="reset">
+    </form>
+    <script>
+        function onSubmit(){
+            let ticketPrice;
+            let diskon;
+            let total;
+
+            const destSelect = document.form.tujuan.value;
+            const classSelect = document.form.kelas.value;
+            const ticketAmt = document.form.amount.value;
+            const memberStatus = document.form.member.value;
+
+            if (destSelect == "Jakarta"){
+                if(classSelect =="Eksekutif") ticketPrice = 70000;
+                if(classSelect =="Bisnis") ticketPrice = 40000;
+                if(classSelect =="Ekonomi") ticketPrice = 10000;
+            } else if (destSelect == "Solo"){
+                if(classSelect =="Eksekutif") ticketPrice = 80000;
+                if(classSelect =="Bisnis") ticketPrice = 50000;
+                if(classSelect =="Ekonomi") ticketPrice = 20000;
+            } else if (destSelect == "Surabaya"){
+                if(classSelect =="Eksekutif") ticketPrice = 90000;
+                if(classSelect =="Bisnis") ticketPrice = 60000;
+                if(classSelect =="Ekonomi") ticketPrice = 30000;
+            } else {
+                console.log("Error, Destination or Class Selected is not found!")
+            }
+            
+            let subTotal = ticketPrice * ticketAmt;
+            
+            memberStatus? diskon = 0.1 : diskon = 0;
+            total = subTotal*(1 - diskon);
+            const message = `Harga Ticket : ${ticketPrice}\nSubtotal : ${subTotal}\nDiskon : ${diskon * 100}%\nTotal : ${total}`
+            alert(message);
+            console.log(`${destSelect} , ${classSelect} , ${ticketPrice},${diskon}, ${subTotal},${total}`);
+        };
+    </script>
+</body>
+
+</html>
