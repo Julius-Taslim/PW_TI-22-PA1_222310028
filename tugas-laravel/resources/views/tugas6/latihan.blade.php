@@ -14,26 +14,22 @@
     <div class="container my-4 d-flex justify-content-center">
         <div class="card d-flex my-4 w-50">
             <h5 class="card-header text-center ">
-                Hello, This is Julius!
+                Tugas 6
             </h5>
             <div>
                 <div class="card-body">
-                    <p class="card-text">Here's a little bit of my information! </p>
-                    <div class="card-text ">
-                        <h6 class="d-inline">Name : </h6>
-                        <p class="d-inline">Julius Taslim</p>
+                    <h5 class="card-text">Menampilkan Controller index, identity, dan family</h5>
+                    <div class="card-text my-1">
+                        <h6 class="d-inline">Index  : </h6>
+                        <a href="{{url('/index')}}" class="btn btn-primary">Index</a>
                     </div>
-                    <div class="card-text">
-                        <h6 class="d-inline">Age : </h6>
-                        <p class="d-inline">18</p>
+                    <div class="card-text my-1">
+                        <h6 class="d-inline">Identity : </h6>
+                        <a href="{{url('/identity')}}" class="btn btn-primary">Identity</a>
                     </div>
-                    <div class="card-text">
-                        <h6 class="d-inline">Major : </h6>
-                        <p class="d-inline">S1-Teknologi Informasi</p>
-                    </div>
-                    <div class="card-text">
-                        <h6 class="d-inline">Campus : </h6>
-                        <p class="d-inline">Institut Bisnis Informatika Kesatuan</p>
+                    <div class="card-text my-1">
+                        <h6 class="d-inline">Family : </h6>
+                        <a href="{{url('/family')}}" class="btn btn-primary">Family</a>
                     </div>
                 </div>
             </div>
