@@ -34,7 +34,17 @@
             </tr>
             <tr>
                 <td>Hasil</td>
+                <td id="deretResult"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Factorial</td>
                 <td id="factorialResult"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Jumlah</td>
+                <td id="result"></td>
                 <td></td>
             </tr>
         </table>
@@ -60,7 +70,9 @@
             const number = parseInt(document.faktorial.n.value);
             const factorialResult = factorial(number);
             const deretResult = deret(number);
-            document.getElementById('factorialResult').innerHTML = factorialResult + deretResult;
+            document.getElementById('factorialResult').innerHTML = factorialResult;
+            document.getElementById('deretResult').innerHTML = deretResult;
+            document.getElementById('result').innerHTML = factorialResult + deretResult;
         }        
         const factorialButton = document.querySelector('#factorial');
         factorialButton.addEventListener('click',factorialSubmit);
